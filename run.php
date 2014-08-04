@@ -67,7 +67,6 @@ function getForumUser($name){
 	$name = preg_replace('|\[[^\]]+\]|','',$name);
 	$name = strtolower($name);
 	$name = trim($name);
-	$rows[0] = NULL;
 	if (strlen($name)>0){
 		//SELECT * FROM smf_members WHERE member_name LIKE '%diana%'
 		$result = mysql_query("SELECT * FROM smf_members WHERE member_name LIKE '%" . $name . "%'");
@@ -75,10 +74,12 @@ function getForumUser($name){
 			$cnum=0;
 			while ($row = mysql_fetch_assoc($result)) {
 				$rows[] = $row;
-                $cnum++;
+				$cnum++;
 			}
 			mysql_free_result($result);
-		} 
+			if ($cnum==0) $rows[0] = NULL;
+			//var_dump($rows);
+		} else $rows[0] = NULL;
 	}
 	return $rows[0];
 }
