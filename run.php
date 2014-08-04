@@ -46,10 +46,15 @@ foreach($players as $player){
 	if ($Name!='NA') $NameText = '<a target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
 	else $NameText = $Name;
 	$SteamId = getSteamId($User);
-	if (strlen($SteamId)==17) $SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
-	else $SteamText = $SteamId;
+	if (strlen($SteamId)==17) {
+		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
+		$BEGUID = getBEGUID($SteamId);
+	} else {
+		$SteamText = $SteamId;
+		$BEGUID = 'NA';
+	}
 	$Fraction = getFraction($User);
-	$BEGUID = getBEGUID($SteamId);
+	
 	$html .= '<tr><td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
 }
 
@@ -141,7 +146,7 @@ function getBEGUID($id){
         $tmp += chr($id & 0xFF);
         $id >>= 8;
 	}
-    $beguid = md5(tmp);
+    $beguid = md5($tmp);
 	return $beguid;
 }
 
