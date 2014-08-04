@@ -78,6 +78,9 @@ function getForumName($user){
 function getSteamId($user){
 	if ($user!=NULL){
 		$id = $user["id_member"];
+		$id = 18;
+		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable = 'cust_steam_'
+		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable = 'cust_steam_'");
 	} else $id = 'NA';
 	return $id;
 }
