@@ -1,0 +1,44 @@
+.userstatus {
+ 
+  display: inline-block;
+  width: 120px;
+   text-align: center;
+  height: 20px;
+}
+..userstatus:after {
+  display: inline-block;
+  text-align: center;
+}
+.userstatus0:after {
+  content: '-';
+} 
+.userstatus1:after  {
+  content: 'предупреждение';
+}
+.userstatus2:after  {
+  content: 'банить';
+
+}
+.userstatus3:after  {
+  content: 'забанен';
+}
+.userstatus1 {
+  background: yellow;
+}
+.userstatus2 {
+  background: red;
+ 
+}
+.userstatus3 {
+  color: #fff;
+  background: #333;
+}
+
+.userstatus4 {
+ color: #000;
+
+}
+.userstatus4:after{
+ content: 'Разбан';
+ 
+}

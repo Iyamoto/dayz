@@ -22,12 +22,24 @@ if (!$con) {
 $html = '<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>blabla</title>
+    <title>white list</title>
+    <meta charset="utf-8">
+     <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+       
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<table border="1" cellpadding="5" cellspacing="5" bordercolor="black" frame="box" rules="all"><tbody>
-<tr><th>DayzName</th><th>ForumName</th><th>SteamID</th><th>Fraction</th></tr>
+	<div class="container">
+<table class="table table-bordered">
+<thead>
+	<tr><th>DayzName</th><th>ForumName</th><th>SteamID</th><th>Fraction</th></tr>
+
+</thead>
+<tbody>
+ 
 ';
 
 foreach($players as $player){
@@ -42,6 +54,8 @@ foreach($players as $player){
 $html .= '
 </tbody></table>
 </body>
+	</div>
+
 </html>';
 
 echo $html;
