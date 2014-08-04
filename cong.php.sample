@@ -1,0 +1,6 @@
+<?php
+
+$db = 'oplot';
+$pass = 'oplot';
+
+?>

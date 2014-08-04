@@ -61,8 +61,9 @@ function getForumUser($name){
                 $rows[] = $row;
                 $cnum++;
         }
-		var_dump($rows);
         mysql_free_result($result);
+		if $cnum==0 $rows[0] = NULL;
+		var_dump($rows);
 	} else $rows[0] = NULL;
 	return $rows[0];
 }
