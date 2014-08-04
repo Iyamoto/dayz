@@ -44,7 +44,7 @@ $html .= '
 </body>
 </html>';
 
-echo $html;
+//echo $html;
 mysql_close($con);
 
 //Helpers
@@ -82,6 +82,7 @@ function getSteamId($user){
 		$id = 18;
 		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable = 'cust_steam_'
 		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable = 'cust_steam_'");
+		var_dump($result);
 		if($result){
 			$cnum=0;
 			while ($row = mysql_fetch_assoc($result)) {
