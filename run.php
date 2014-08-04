@@ -100,6 +100,7 @@ function getFraction($user){
 	$f = 'NA';
 	if ($user!=NULL){
 		$id = $user["id_group"];
+		var_dump($id);
 		//SELECT * FROM smf_membergroups WHERE id_group = 'id'
 		$result = mysql_query("SELECT * FROM smf_membergroups WHERE id_group = '" . $id . "'");
 		if($result){
@@ -110,6 +111,7 @@ function getFraction($user){
 			}
 			mysql_free_result($result);
 			if ($cnum>0) {
+				var_dump($rows[0]);
 				$f = $rows[0]["group_name"];
 			}
 		} 
