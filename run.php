@@ -24,22 +24,18 @@ $html = '<!DOCTYPE html>
 <head>
     <title>Oplot White List</title>
     <meta charset="utf-8">
-     <link href="static/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/style.css">
-       
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/style.css">    
     <script src="static/js/jquery.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 	<div class="container">
 <table class="table table-bordered">
 <thead>
-	<tr><th>DayzName</th><th>ForumName</th><th>SteamID</th><th>Group</th></tr>
-
+	<tr><th>DayzName</th><th>ForumName</th><th>Group</th><th>SteamID</th><th>BEGUID</th></tr>
 </thead>
 <tbody>
- 
 ';
 
 foreach($players as $player){
@@ -53,7 +49,8 @@ foreach($players as $player){
 	if (strlen($SteamId)==17) $SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 	else $SteamText = $SteamId;
 	$Fraction = getFraction($User);
-	$html .= '<tr><td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$SteamText.'</td><td>'.$Fraction.'</td></tr>';
+	$BEGUID = getBEGUID($SteamId);
+	$html .= '<tr><td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
 }
 
 $html .= '
@@ -135,6 +132,11 @@ function getFraction($user){
 		} 
 	}
 	return $f;
+}
+
+function getBEGUID($id){
+	$beguid = $id;
+	return $beguid;
 }
 
 //http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001?addr=173.199.67.130
