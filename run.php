@@ -76,13 +76,25 @@ function getForumName($user){
 }
 
 function getSteamId($user){
+	$SteamId = 'NA';
 	if ($user!=NULL){
 		$id = $user["id_member"];
 		$id = 18;
 		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable = 'cust_steam_'
 		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable = 'cust_steam_'");
-	} else $id = 'NA';
-	return $id;
+		if($result){
+			$cnum=0;
+			while ($row = mysql_fetch_assoc($result)) {
+                $rows[] = $row;
+                $cnum++;
+			}
+			mysql_free_result($result);
+			if ($cnum>0) {
+				var_dump($rows);
+			}
+		} 
+	} 
+	return $SteamId;
 }
 
 function getFraction($user){
