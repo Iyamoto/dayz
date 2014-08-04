@@ -35,7 +35,7 @@ $html = '<!DOCTYPE html>
 	<div class="container">
 <table class="table table-bordered">
 <thead>
-	<tr><th>DayzName</th><th>ForumName</th><th>SteamID</th><th>Fraction</th></tr>
+	<tr><th>DayzName</th><th>ForumName</th><th>SteamID</th><th>Group</th></tr>
 
 </thead>
 <tbody>
@@ -45,12 +45,15 @@ $html = '<!DOCTYPE html>
 foreach($players as $player){
 	$DayzName = $player->getName();
 	$User = getForumUser($DayzName);
+	$ForumId = $User["id_member"];
 	$Name = getForumName($User);
+	if ($Name!='NA') $NameText = '<a target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
+	else $NameText = $Name;
 	$SteamId = getSteamId($User);
-	$Fraction = getFraction($User);
 	if (strlen($SteamId)==17) $SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 	else $SteamText = $SteamId;
-	$html .= '<tr><td>'.$DayzName.'</td><td>'.$Name.'</td><td>'.$SteamText.'</td><td>'.$Fraction.'</td></tr>';
+	$Fraction = getFraction($User);
+	$html .= '<tr><td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$SteamText.'</td><td>'.$Fraction.'</td></tr>';
 }
 
 $html .= '
