@@ -48,7 +48,9 @@ foreach($players as $player){
 	$Name = getForumName($User);
 	$SteamId = getSteamId($User);
 	$Fraction = getFraction($User);
-	$html .= '<tr><td>'.$DayzName.'</td><td>'.$Name.'</td><td>'.$SteamId.'</td><td>'.$Fraction.'</td></tr>';
+	if (strlen($SteamId)==17) $SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
+	else $SteamText = $SteamId;
+	$html .= '<tr><td>'.$DayzName.'</td><td>'.$Name.'</td><td>'.$SteamText.'</td><td>'.$Fraction.'</td></tr>';
 }
 
 $html .= '
