@@ -63,23 +63,29 @@ function getForumUser($name){
         }
         mysql_free_result($result);
 		if ($cnum==0) $rows[0] = NULL;
-		var_dump($rows);
+		//var_dump($rows);
 	} else $rows[0] = NULL;
 	return $rows[0];
 }
 
 function getForumName($user){
-	$name = $user["member_name"];
+	if ($user!=NULL)
+		$name = $user["member_name"];
+	else $name = 'NA';
 	return $name;
 }
 
 function getSteamId($user){
-	$id = '1111';
+	if ($user!=NULL){
+		$id = $user["id_member"];
+	} else $id = 'NA';
 	return $id;
 }
 
 function getFraction($user){
-	$f = '1';
+	if ($user!=NULL)
+		$f = $user["member_name"];
+	else $f = 'NA';
 	return $f;
 }
 
