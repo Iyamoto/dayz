@@ -44,7 +44,7 @@ $html .= '
 </body>
 </html>';
 
-//echo $html;
+echo $html;
 mysql_close($con);
 
 //Helpers
