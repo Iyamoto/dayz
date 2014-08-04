@@ -99,9 +99,9 @@ function getSteamId($user){
 function getFraction($user){
 	$f = 'NA';
 	if ($user!=NULL){
-		$id = $user["id_member"];
-		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable LIKE '%cust_steam_%'
-		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable LIKE '%cust_189%'");
+		$id = $user["id_group"];
+		//SELECT * FROM smf_membergroups WHERE id_group = 'id'
+		$result = mysql_query("SELECT * FROM smf_membergroups WHERE id_group = '" . $id . "'");
 		if($result){
 			$cnum=0;
 			while ($row = mysql_fetch_assoc($result)) {
@@ -110,7 +110,7 @@ function getFraction($user){
 			}
 			mysql_free_result($result);
 			if ($cnum>0) {
-				$f = $rows[0]["value"];
+				$f = $rows[0]["group_name"];
 			}
 		} 
 	}
