@@ -79,7 +79,6 @@ function getSteamId($user){
 	$SteamId = 'NA';
 	if ($user!=NULL){
 		$id = $user["id_member"];
-		$id = 18;
 		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable LIKE '%cust_steam_%'
 		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable LIKE '%cust_steam_%'");
 		if($result){
@@ -101,7 +100,6 @@ function getFraction($user){
 	$f = 'NA';
 	if ($user!=NULL){
 		$id = $user["id_member"];
-		$id = 18;
 		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable LIKE '%cust_steam_%'
 		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable LIKE '%cust_189%'");
 		if($result){
