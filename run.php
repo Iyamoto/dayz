@@ -91,7 +91,7 @@ function getSteamId($user){
 			}
 			mysql_free_result($result);
 			if ($cnum>0) {
-				var_dump($rows);
+				$SteamId = $rows[0]["value"];
 			}
 		} 
 	} 
@@ -99,9 +99,24 @@ function getSteamId($user){
 }
 
 function getFraction($user){
-	if ($user!=NULL)
-		$f = $user["member_name"];
-	else $f = 'NA';
+	$f = 'NA';
+	if ($user!=NULL){
+		$id = $user["id_member"];
+		$id = 18;
+		//SELECT * FROM smf_themes WHERE id_member = 'id' AND variable LIKE '%cust_steam_%'
+		$result = mysql_query("SELECT * FROM smf_themes WHERE id_member = '" . $id . "' AND variable LIKE '%cust_189%'");
+		if($result){
+			$cnum=0;
+			while ($row = mysql_fetch_assoc($result)) {
+                $rows[] = $row;
+                $cnum++;
+			}
+			mysql_free_result($result);
+			if ($cnum>0) {
+				$f = $rows[0]["value"];
+			}
+		} 
+	}
 	return $f;
 }
 
