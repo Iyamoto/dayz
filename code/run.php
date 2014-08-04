@@ -29,7 +29,7 @@ foreach($players as $player){
 	$Name = getForumName($DayzName);
 	$SteamId = getSteamId($Name);
 	$Fraction = getFraction($Name);
-	echo $DayzName . "\t". $Name . "\t". $SteamId . "\t" . $Fraction ."\n";
+	//echo $DayzName . "\t". $Name . "\t". $SteamId . "\t" . $Fraction ."\n";
 	$html .= '<tr><td>'.$DayzName.'</td><td>'.$Name.'</td><td>'.$SteamId.'</td><td>'.$Fraction.'</td></tr>';
 }
 
@@ -39,7 +39,8 @@ $html .= '
 </body>
 </html>';
 
-file_put_contents('index.html', $html);
+//file_put_contents('index.html', $html);
+echo $html;
 
 //Helpers
 
