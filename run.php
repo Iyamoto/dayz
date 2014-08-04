@@ -136,6 +136,12 @@ function getFraction($user){
 
 function getBEGUID($id){
 	$beguid = $id;
+	$tmp = 'BE';
+    for($i=0;$i<8;$i++){
+        $tmp += chr($id & 0xFF);
+        $id >>= 8;
+	}
+    $beguid = md5(tmp);
 	return $beguid;
 }
 
