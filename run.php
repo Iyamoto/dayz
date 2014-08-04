@@ -22,7 +22,7 @@ if (!$con) {
 $html = '<!DOCTYPE html>
 <html>
 <head>
-    <title>white list</title>
+    <title>Oplot White List</title>
     <meta charset="utf-8">
      <link href="static/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
