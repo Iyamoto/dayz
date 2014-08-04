@@ -23,7 +23,7 @@ $html = '<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>blabla</title>
+    <title>Oplot White List</title>
 </head>
 <body>
 <table border="1" cellpadding="5" cellspacing="5" bordercolor="black" frame="box" rules="all"><tbody>
