@@ -57,7 +57,7 @@ $html .= '
 </body>
 </html>';
 
-echo $html;
+//echo $html;
 
 //Helpers
 
