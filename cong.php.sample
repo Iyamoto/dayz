@@ -1,5 +1,7 @@
 <?php
 
+$ip = '173.199.67.130';
+$port = '27017';
 $db = 'oplot';
 $pass = 'oplot';
 

@@ -2,14 +2,16 @@
 
 error_reporting(E_ALL & ~E_USER_NOTICE | E_STRICT);
 
+//Read config
+require_once dirname(__FILE__) . "/conf.php";
+
 //Get players from dayz server
 require_once dirname(__FILE__) . "/lib/steam-condenser.php";
-$server = new GoldSrcServer('173.199.67.130', 27017);
+$server = new GoldSrcServer($ip, $port);
 $server->initialize();
 $players = $server->getPlayers();
 
 //Connect to forum db
-require_once dirname(__FILE__) . "/conf.php";
 $con = mysql_connect('localhost', $db, $pass);
 if (!$con) {
     die('Could not connect: ' . mysql_error());
@@ -62,11 +64,10 @@ $html .= '
 </tbody></table>
 </body>
 	</div>
-
 </html>';
 
-echo $html;
 mysql_close($con);
+echo $html;
 
 //Helpers
 
