@@ -8,7 +8,7 @@ $server = new GoldSrcServer('173.199.67.130', 27017);
 $server->initialize();
 $players = $server->getPlayers();
 
-//Get data from forum db
+//Connect to forum db
 require_once dirname(__FILE__) . "/conf.php";
 $con = mysql_connect('localhost', $db, $pass);
 if (!$con) {
@@ -16,18 +16,6 @@ if (!$con) {
 } else {
         mysql_select_db($db, $con);
         $result = mysql_query("set names 'utf8'");
-		$name = 'diana';
-        $result = mysql_query("SELECT * FROM smf_members WHERE member_name LIKE '%" . $name . "%'");
-		//SELECT * FROM smf_members WHERE member_name LIKE '%diana%'
-		var_dump($result);
-        $cnum=0;
-        while ($row = mysql_fetch_assoc($result)) {
-                $rows[] = $row;
-                $cnum++;
-        }
-		var_dump($rows);
-        mysql_free_result($result);
-        mysql_close($con);
 }
 		
 //Form table
@@ -43,12 +31,11 @@ $html = '<!DOCTYPE html>
 ';
 
 foreach($players as $player){
-	//var_dump($player);
 	$DayzName = $player->getName();
-	$Name = getForumName($DayzName);
-	$SteamId = getSteamId($Name);
-	$Fraction = getFraction($DayzName);
-	//echo $DayzName . "\t". $Name . "\t". $SteamId . "\t" . $Fraction ."\n";
+	$User = getForumUser($DayzName);
+	$Name = getForumName($User);
+	$SteamId = getSteamId($User);
+	$Fraction = getFraction($User);
 	$html .= '<tr><td>'.$DayzName.'</td><td>'.$Name.'</td><td>'.$SteamId.'</td><td>'.$Fraction.'</td></tr>';
 }
 
@@ -58,22 +45,39 @@ $html .= '
 </html>';
 
 //echo $html;
+mysql_close($con);
 
 //Helpers
 
-function getForumName($name){
+function getForumUser($name){
 	$name = preg_replace('|\[[^\]]+\]|','',$name);
 	$name = strtolower($name);
 	$name = trim($name);
+	//SELECT * FROM smf_members WHERE member_name LIKE '%diana%'
+    $result = mysql_query("SELECT * FROM smf_members WHERE member_name LIKE '%" . $name . "%'");
+	if($result){
+        $cnum=0;
+        while ($row = mysql_fetch_assoc($result)) {
+                $rows[] = $row;
+                $cnum++;
+        }
+		var_dump($rows);
+        mysql_free_result($result);
+	} else $rows[0] = NULL;
+	return $rows[0];
+}
+
+function getForumName($user){
+	$name = $user["member_name"];
 	return $name;
 }
 
-function getSteamId($name){
+function getSteamId($user){
 	$id = '1111';
 	return $id;
 }
 
-function getFraction($name){
+function getFraction($user){
 	$f = '1';
 	return $f;
 }
