@@ -50,7 +50,8 @@ foreach($players as $player){
 	$SteamId = getSteamId($User);
 	if (strlen($SteamId)==17) {
 		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
-		$BEGUID = getBEGUID($SteamId);
+		if ($calcbeguid==true) $BEGUID = getBEGUID($SteamId);
+		else $BEGUID = 'NA';
 	} else {
 		$SteamText = $SteamId;
 		$BEGUID = 'NA';
