@@ -74,6 +74,8 @@ echo $html;
 
 function getForumUser($name){
 	$name = preg_replace('|\[[^\]]+\]|','',$name);
+	$name = preg_replace('|\([^\)]+\)|','',$name);
+	$name = preg_replace('|\{[^\}]+\}|','',$name);
 	$name = strtolower($name);
 	$name = trim($name);
 	if (strlen($name)>0){
