@@ -48,6 +48,11 @@ foreach($players as $player){
 	if ($Name!='NA') $NameText = '<a target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
 	else $NameText = $Name;
 	$SteamId = getSteamId($User);
+	
+	if (strlen($SteamId)==8) {
+		if ($calcbeguid==true) $SteamId = id2id($SteamId);
+	}
+	
 	if (strlen($SteamId)==17) {
 		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 		if ($calcbeguid==true) $BEGUID = getBEGUID($SteamId);
@@ -56,6 +61,7 @@ foreach($players as $player){
 		$SteamText = $SteamId;
 		$BEGUID = 'NA';
 	}
+	
 	$Fraction = getFraction($User);
 	
 	$html .= '<tr><td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
@@ -153,6 +159,13 @@ function getBEGUID($id){
 	}
     $beguid = md5($tmp);
 	return $beguid;
+}
+
+function id2id($id){
+	$steam64 = '0x0110000100000000';
+	$t = gmp_mul($id, "2");
+	$sum = gmp_add($t, $steam64);
+	return gmp_strval($sum);
 }
 
 //http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001?addr=173.199.67.130
