@@ -62,8 +62,8 @@ foreach($players as $player){
 
 $html .= '
 </tbody></table>
+</div>
 </body>
-	</div>
 </html>';
 
 mysql_close($con);
