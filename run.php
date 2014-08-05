@@ -50,7 +50,7 @@ foreach($players as $player){
 	$SteamId = getSteamId($User);
 	
 	if (strlen($SteamId)==8) {
-		if ($calcbeguid==true) $SteamId = id2id($SteamId);
+		$SteamId = urlid2id($SteamId);
 	}
 	
 	if (strlen($SteamId)==17) {
@@ -161,13 +161,14 @@ function getBEGUID($id){
 	return $beguid;
 }
 
-function id2id($id){
-	$steam64 = '0x0110000100000000';
-	$t = gmp_mul($id, "2");
-	$sum = gmp_add($t, $steam64);
-	return gmp_strval($sum);
+function urlid2id($id){
+	$url = 'http://steamcommunity.com/id/'.$id.'/?xml=1';
+	$html = file_get_contents($url);
+	preg_match('|<steamID64>(\d+)<|', $html, $m);
+	return $m[1];
 }
 
+//http://steamcommunity.com/id/25412541/?xml=1
 //http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001?addr=173.199.67.130
 //http://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/?addr=173.199.67.130
 //https://community.bistudio.com/wiki/BattlEye
