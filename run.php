@@ -143,8 +143,9 @@ function getFraction($user){
 function getBEGUID($id){
 	$tmp = 'BE';
     for($i=0;$i<8;$i++){
-        $tmp .= chr($id & 0xFF);
-        $id >>= 8;
+		$t = gmp_and($id, "0xFF");
+        $tmp .= chr(gmp_strval($t));
+        $id = gmp_div_q($id, "256");		
 	}
     $beguid = md5($tmp);
 	return $beguid;
