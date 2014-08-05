@@ -48,7 +48,7 @@ foreach($players as $player){
 	if ($Name!='NA') $NameText = '<a target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
 	else $NameText = $Name;
 	$SteamId = getSteamId($User);
-	$BEGUID = 'NA'
+	$BEGUID = 'NA';
 	$SteamText = $SteamId;
 	
 	if (strlen($SteamId)==8) {
