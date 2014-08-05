@@ -48,18 +48,16 @@ foreach($players as $player){
 	if ($Name!='NA') $NameText = '<a target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
 	else $NameText = $Name;
 	$SteamId = getSteamId($User);
+	$BEGUID = 'NA'
+	$SteamText = $SteamId;
 	
 	if (strlen($SteamId)==8) {
-		$SteamId = urlid2id($SteamId);
+		$SteamText = '<a target="_blank" href="http://steamcommunity.com/id/'.$SteamId.'">'.$SteamId.'</a>';
 	}
 	
 	if (strlen($SteamId)==17) {
 		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 		if ($calcbeguid==true) $BEGUID = getBEGUID($SteamId);
-		else $BEGUID = 'NA';
-	} else {
-		$SteamText = $SteamId;
-		$BEGUID = 'NA';
 	}
 	
 	$Fraction = getFraction($User);
@@ -166,6 +164,13 @@ function urlid2id($id){
 	$html = file_get_contents($url);
 	preg_match('|<steamID64>(\d+)<|', $html, $m);
 	return $m[1];
+}
+
+function id2id($id){
+	$steam64 = '0x0110000100000000';
+	$t = gmp_mul($id, "2");
+	$sum = gmp_add($t, $steam64);
+	return gmp_strval($sum);
 }
 
 //http://steamcommunity.com/id/25412541/?xml=1
