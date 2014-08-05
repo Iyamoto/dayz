@@ -97,7 +97,7 @@ function getForumUser($name){
 
 function getForumName($user){
 	if ($user!=NULL)
-		$name = $user["member_name"];
+		$name = $user["real_name"];
 	else $name = 'NA';
 	return $name;
 }
