@@ -26,6 +26,11 @@ if ($db = new SQLite3("base.db")) {
     die('black list not found');
 }
 
+//Get players from dayz server
+require_once dirname(__FILE__) . "/lib/steam-condenser.php";
+$server = new GoldSrcServer($ip, $port);
+$server->initialize();
+$players = $server->getPlayers();
 		
 //Form table
 
@@ -42,7 +47,10 @@ echo '
 $result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as member_name ,t1.real_name  as real_name , t2.value as value FROM smf_members t1 inner join  smf_themes t2 on t1.id_member = t2.id_member and t2.variable='cust_steam-'");
 
 while ($row = mysql_fetch_assoc($result)) {
-	echo '<tr>';
+	if (isOnline($players, $row["real_name"]))
+		echo '<tr class="online">';
+	else 
+		echo '<tr>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["member_name"].'</a></td>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
 	

@@ -1,6 +1,18 @@
 ﻿<?
 //Helpers
 
+function isOnline($players, $ForumName){
+	foreach($players as $player){
+		$name = $player->getName();
+		$name = clearName($name);
+		$ForumName = clearName($ForumName);
+		if ($ForumName == $name) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function showHeader(){
 
 echo '<!DOCTYPE html>
@@ -40,13 +52,17 @@ echo '<!DOCTYPE html>
 	</nav>';
 }	
 
-
-function getForumUser($name){
+function clearName($name){
 	$name = preg_replace('|\[[^\]]+\]|','',$name);
 	$name = preg_replace('|\([^\)]+\)|','',$name);
 	$name = preg_replace('|\{[^\}]+\}|','',$name);
 	$name = strtolower($name);
 	$name = trim($name);
+	return $name;
+}
+
+function getForumUser($name){
+	$name = clearName($name);
 	if (strlen($name)>0){
 		//SELECT * FROM smf_members WHERE member_name LIKE '%diana%'
 		//$result = mysql_query("SELECT * FROM smf_members WHERE member_name LIKE '%" . $name . "%'");
