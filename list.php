@@ -16,15 +16,15 @@ if (!$con) {
 }
 
 //Get blacklist db
-/*
+
 if ($db = new SQLite3("base.db")) { 
     $results = $db->query('select id, steamid, status from users');
     while ($row = $results->fetchArray()) {
-		$blacklist[] = $row;
+		$blacklist[$row["steamid"]] = $row["id"];
 	}
 } else {
     die('black list not found');
-}*/
+}
 
 		
 //Form table
@@ -35,7 +35,7 @@ echo '
 	<div class="container">
 		<table class="table table-bordered">
 			<thead>
-				<tr><th>ForumName</th><th>Realname</th><th>SteamID</th></tr>
+				<tr><th>ForumName</th><th>Realname</th><th>SteamID</th><th>Blacklist</th></tr>
 			</thead>
 	<tbody>
 ';
@@ -56,6 +56,12 @@ while ($row = mysql_fetch_assoc($result)) {
 		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 	
 	echo '<td>'.$SteamText.'</td>';
+	
+	if (array_key_exists($SteamId, $blacklist)) 
+		echo '<a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$blacklist[$SteamId].'</a>';;
+	else
+		echo '<td>NA</td>';
+	
 	echo '</tr>';
     };
 echo  '
