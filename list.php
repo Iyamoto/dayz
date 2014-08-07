@@ -19,7 +19,9 @@ if (!$con) {
 
 if ($db = new SQLite3("base.db")) { 
     $results = $db->query('select id, steamid, status from users');
-    var_dump($results->fetchArray()); 
+    while ($row = $results->fetchArray()) {
+		var_dump($row);
+	}
 } else {
     die('black list not found');
 }
