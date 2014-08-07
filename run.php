@@ -109,7 +109,7 @@ function getForumUser($name){
 	if (strlen($name)>0){
 		//SELECT * FROM smf_members WHERE member_name LIKE '%diana%'
 		//$result = mysql_query("SELECT * FROM smf_members WHERE member_name LIKE '%" . $name . "%'");
-		$result = mysql_query("SELECT * FROM smf_members WHERE real_name LIKE '%" . $name . "%'");
+		$result = mysql_query("SELECT * FROM smf_members WHERE real_name LIKE '%" . $name . "%' ORDER BY CHAR_LENGTH(real_name)");
 		if($result){
 			$cnum=0;
 			while ($row = mysql_fetch_assoc($result)) {
