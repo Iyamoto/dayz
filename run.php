@@ -3,8 +3,8 @@
 error_reporting(E_ALL & ~E_USER_NOTICE | E_STRICT);
 
 //Read config
-require_once dirname(__FILE__) . "/conf.php";
-require_once dirname(__FILE__) . "/func.php";
+require_once "conf.php";
+require_once "func.php";
 
 //Get players from dayz server
 require_once dirname(__FILE__) . "/lib/steam-condenser.php";
