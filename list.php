@@ -64,7 +64,17 @@ while ($row = mysql_fetch_assoc($result)) {
 	echo '<tr>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["member_name"].'</a></td>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
-	echo '<td><a href="http://steamcommunity.com/profiles/'.$row["value"].'">'.$row["value"].'</a></td>';
+	
+	$SteamId = $row["value"];
+	$SteamText = $SteamId;
+	
+	if (strlen($SteamId)==8) 
+		$SteamText = '<a target="_blank" href="http://steamcommunity.com/id/'.$SteamId.'">'.$SteamId.'</a>';
+	
+	if (strlen($SteamId)==17) 
+		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
+	
+	echo '<td>'.$SteamText.'</td>';
 	echo '</tr>';
     };
 echo  '
