@@ -1,6 +1,46 @@
 ﻿<?
 //Helpers
 
+function showHeader(){
+
+echo '<!DOCTYPE html>
+<html>
+<head>
+    <title>Oplot White List</title>
+    <meta charset="utf-8">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/style.css">    
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Brand</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><a href="run.php">Players</a></li>
+	        <li class="active"><a href="list.php">With steamid</a></li>
+	     	<li><a href="all.php">All users</a></li>
+			<li><a href="http://prime.gunlinux.org">blacklist</a></li>
+			<li><a href="http://steam.gunlinux.org">steam calc</a></li>
+	      </ul>
+	     
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>';
+}	
+
+
 function getForumUser($name){
 	$name = preg_replace('|\[[^\]]+\]|','',$name);
 	$name = preg_replace('|\([^\)]+\)|','',$name);
@@ -98,8 +138,9 @@ function id2id($id){
 	return gmp_strval($sum);
 }
 
-?>
 //http://steamcommunity.com/id/25412541/?xml=1
 //http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001?addr=173.199.67.130
 //http://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/?addr=173.199.67.130
 //https://community.bistudio.com/wiki/BattlEye
+
+?>
