@@ -28,11 +28,11 @@ echo '<!DOCTYPE html>
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li><a href="run.php">Players</a></li>
-	        <li class="active"><a href="list.php">With steamid</a></li>
-	     	<li><a href="all.php">All users</a></li>
-			<li><a href="http://prime.gunlinux.org">blacklist</a></li>
-			<li><a href="http://steam.gunlinux.org">steam calc</a></li>
+	        <li><a href="run.php">Online</a></li>
+	        <li><a href="list.php">SteamID</a></li>
+	     	<li><a href="all.php">Forum Users</a></li>
+			<li><a href="http://prime.gunlinux.org">BlackList</a></li>
+			<li><a href="http://steam.gunlinux.org">Steam Calc</a></li>
 	      </ul>
 	     
 	    </div><!-- /.navbar-collapse -->
