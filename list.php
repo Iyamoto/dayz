@@ -58,7 +58,7 @@ while ($row = mysql_fetch_assoc($result)) {
 	echo '<td>'.$SteamText.'</td>';
 	
 	if (array_key_exists($SteamId, $blacklist)) 
-		echo '<a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$blacklist[$SteamId].'</a>';
+		echo '<td><a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$blacklist[$SteamId].'</a></td>';
 	else
 		echo '<td>NA</td>';
 	
