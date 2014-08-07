@@ -17,7 +17,7 @@ if (!$con) {
 
 //Get blacklist db
 
-if ($db = sqlite_open('base.db', 0666, $sqliteerror)) { 
+if ($db = sqlite3_open('base.db', 0666, $sqliteerror)) { 
     $result = sqlite_query($db, 'select id, steamid, status from users');
     var_dump(sqlite_fetch_array($result)); 
 } else {
