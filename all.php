@@ -53,3 +53,4 @@ echo  '
 </html>';
 
 mysql_close($con);
+?>
