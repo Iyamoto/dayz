@@ -16,15 +16,16 @@ if (!$con) {
 }
 
 //Get blacklist db
-
+/*
 if ($db = new SQLite3("base.db")) { 
     $results = $db->query('select id, steamid, status from users');
     while ($row = $results->fetchArray()) {
-		var_dump($row);
+		$blacklist[] = $row;
 	}
 } else {
     die('black list not found');
-}
+}*/
+
 		
 //Form table
 
