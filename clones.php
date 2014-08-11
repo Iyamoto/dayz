@@ -38,6 +38,9 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 mysql_close($con);
 
+$uniq = array_unique($steams);
+var_dump(array_diff_key($steams, $uniq));
+
 foreach($steams as $steam=>$row) {
 echo '<tr>';
 	
