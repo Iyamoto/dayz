@@ -37,23 +37,19 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 mysql_close($con);
 
-foreach($steams as $steam=>$data) {
-	echo sizeof($data)." ";
+foreach($steams as $SteamID=>$data) {
 	if(sizeof($data)>1) {
-		echo "clone found";
-		var_dump($steam, $data);
+		foreach($data as $id=>$row){
+			echo '<tr>';	
+			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["member_name"].'</a></td>';
+			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["real_name"].'</a></td>';
+	$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
+			echo '<td>'.$SteamText.'</td>';
+			echo '</tr>';
+		}
 	}
 }
-/*
-foreach($steams as $SteamId=>$row) {
-	echo '<tr>';	
-	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["member_name"].'</a></td>';
-	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
-	$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
-	echo '<td>'.$SteamText.'</td>';
-	echo '</tr>';
-}
-*/
+
 echo  '
 </tbody></table>
 </div>
