@@ -21,6 +21,7 @@ showHeader();
 
 echo '
 	<div class="container">
+	<h2>Clone by SteamID</h2>
 <table class="table table-bordered">
 <thead>
 	<tr><th>ForumName</th><th>Realname</th><th>SteamID</th></tr>
@@ -58,6 +59,7 @@ foreach($steams as $SteamId=>$data) {
 
 echo  '
 </tbody></table>
+<h2>Clone by Real_Name</h2>
 <table class="table table-bordered">
 <thead>
 	<tr><th>RealName</th><th>MemberName</th></tr>
@@ -78,9 +80,10 @@ foreach($names as $name=>$data){
 
 echo  '
 </tbody></table>
+<h2>Clone by Member_Name</h2>
 <table class="table table-bordered">
 <thead>
-	<tr><th>RealName</th><th>MemberName</th></tr>
+	<tr><th>MemberName</th><th>RealName</th></tr>
 </thead>
 <tbody>';
 
@@ -88,8 +91,8 @@ foreach($members as $name=>$data){
 	if(sizeof($data)>1) {
 		foreach($data as $id=>$row){
 			echo '<tr>';	
-			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["real_name"].'</a></td>';
 			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["member_name"].'</a></td>';
+			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["real_name"].'</a></td>';
 			echo '</tr>';
 		}
 	}
