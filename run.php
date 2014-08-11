@@ -69,7 +69,7 @@ $html .= '
 </html>';
 
 $Counter = getCounter($players, $BadSteam);
-$html = $Counter . $html;
+$html = $Counter .' '. $html;
 
 mysql_close($con);
 echo $html;

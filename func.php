@@ -5,7 +5,7 @@ function getCounter($players, $bad, $max=40){
 	$html = "<div>";
 	$html .=  'Online: '.sizeof($players). '/'.$max.', Bad steam: '.$bad;
 	$html .=  "</div>";
-	return $html
+	return $html;
 }
 
 function isOnline($players, $ForumName){
