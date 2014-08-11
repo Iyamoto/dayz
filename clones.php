@@ -38,9 +38,16 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 mysql_close($con);
 
-$uniq = array_unique($steams);
-var_dump($uniq);
-//var_dump(array_diff_key($uniq, $steams));
+ksort($steams);
+
+$last = '';
+foreach($steams as $steam=>$row) {
+	if($steam==$last) {
+		echo "clone found";
+	}
+	$last = $steam;
+}
+
 
 foreach($steams as $steam=>$row) {
 echo '<tr>';
