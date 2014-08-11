@@ -50,6 +50,7 @@ echo '<!DOCTYPE html>
 	        <li><a href="run.php">Online</a></li>
 	        <li><a href="list.php">SteamID</a></li>
 	     	<li><a href="all.php">Forum Users</a></li>
+			<li><a href="clones.php">Clones</a></li>
 			<li><a href="http://prime.gunlinux.org">BlackList</a></li>
 			<li><a href="http://steam.gunlinux.org">Steam Calc</a></li>
 			<li><a href="http://forum.oplotdayz.ru/short/">Short Urls</a></li>
