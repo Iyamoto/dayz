@@ -48,29 +48,19 @@ foreach($steams as $steam=>$row) {
 	$last = $steam;
 }
 
-
-foreach($steams as $steam=>$row) {
-echo '<tr>';
-	
+foreach($steams as $SteamId=>$row) {
+	echo '<tr>';	
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["member_name"].'</a></td>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
-	$SteamId = $steam;
-	$SteamText = $SteamId;
-	
-	if (strlen($SteamId)==8) 
-		$SteamText = '<a target="_blank" href="http://steamcommunity.com/id/'.$SteamId.'">'.$SteamId.'</a>';
-	
-	if (strlen($SteamId)==17) 
-		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
-	
+	$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 	echo '<td>'.$SteamText.'</td>';
 	echo '</tr>';
 }
+
 echo  '
 </tbody></table>
 </div>
 </body>
 </html>';
-
 
 ?>
