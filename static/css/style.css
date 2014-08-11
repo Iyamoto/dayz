@@ -42,3 +42,24 @@
  content: 'Разбан';
  
 }
+.counter-wrapper {
+	font-size: 16px;
+}
+.counter-wrapper .players {
+	color: green;
+	font-size: 20px;
+}
+.counter-wrapper .max {
+	font-size: 20px;
+}
+.counter-wrapper .bad {
+	color: red;
+	font-size: 20px;
+}	
+.online {
+
+	background: green;
+}
+.online a  , .online a:hover {
+	color: #fff;
+}

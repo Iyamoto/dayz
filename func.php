@@ -2,9 +2,9 @@
 //Helpers
 
 function getCounter($players, $bad, $max=40){
-	$html = "<div>";
-	$html .=  'Online: '.sizeof($players). '/'.$max.', Bad steam: '.$bad;
-	$html .=  "</div>";
+	$html = '<div class="container counter-wrapper">';
+	$html .=  '<div class="well text-center">Online: <span class="players">'.sizeof($players). '</span> / <span class="max">'.$max.',</span> Bad steam: <span class="bad">'.$bad;
+	$html .=  "</span></div></div>";
 	return $html;
 }
 
@@ -31,10 +31,10 @@ echo '<!DOCTYPE html>
 	<link rel="stylesheet" href="static/css/style.css">    
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 	        <span class="sr-only">Toggle navigation</span>
 	        <span class="icon-bar"></span>
