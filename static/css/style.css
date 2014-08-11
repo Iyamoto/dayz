@@ -57,6 +57,7 @@
 	font-size: 20px;
 }	
 .online {
+	color: #333;
 	background: #D3EE87;
 }
 .online a  , .online a:hover {
