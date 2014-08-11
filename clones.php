@@ -37,7 +37,7 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 mysql_close($con);
 
-foreach($steams as $SteamID=>$data) {
+foreach($steams as $SteamId=>$data) {
 	if(sizeof($data)>1) {
 		foreach($data as $id=>$row){
 			echo '<tr>';	
