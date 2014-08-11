@@ -30,10 +30,12 @@ echo '
 $result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as member_name ,t1.real_name  as real_name , t2.value as value FROM smf_members t1 left join smf_themes t2 on t1.id_member = t2.id_member and t2.variable='cust_steam-'");
 
 while ($row = mysql_fetch_assoc($result)) {
-	$names[$row["real_name"]][$row["id_member"]]["real_name"] = $row["real_name"];
-	$names[$row["real_name"]][$row["id_member"]]["member_name"] = $row["member_name"];
-	$members[$row["member_name"]][$row["id_member"]]["real_name"] = $row["real_name"];
-	$members[$row["member_name"]][$row["id_member"]]["member_name"] = $row["member_name"];
+	$real_name = clearName($row["real_name"]);
+	$member_name = clearName($row["member_name"]);
+	$names[$real_name][$row["id_member"]]["real_name"] = $row["real_name"];
+	$names[$real_name][$row["id_member"]]["member_name"] = $row["member_name"];
+	$members[$member_name][$row["id_member"]]["real_name"] = $row["real_name"];
+	$members[$member_name][$row["id_member"]]["member_name"] = $row["member_name"];
 	if (strlen($row["value"])==17) {
 	$steams[$row["value"]][$row["id_member"]]["real_name"] = $row["real_name"];
 	$steams[$row["value"]][$row["id_member"]]["member_name"] = $row["member_name"];
@@ -63,6 +65,25 @@ echo  '
 <tbody>
 ';
 
+foreach($names as $name=>$data){
+	if(sizeof($data)>1) {
+		foreach($data as $id=>$row){
+			echo '<tr>';	
+			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["real_name"].'</a></td>';
+			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["member_name"].'</a></td>';
+			echo '</tr>';
+		}
+	}
+}
+
+echo  '
+</tbody></table>
+<table class="table table-bordered">
+<thead>
+	<tr><th>RealName</th><th>MemberName</th></tr>
+</thead>
+<tbody>';
+
 foreach($members as $name=>$data){
 	if(sizeof($data)>1) {
 		foreach($data as $id=>$row){
@@ -75,6 +96,7 @@ foreach($members as $name=>$data){
 }
 
 echo  '
+</tbody></table>
 </div>
 </body>
 </html>';
