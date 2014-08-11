@@ -29,24 +29,19 @@ echo '
 ';
 $result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as member_name ,t1.real_name  as real_name , t2.value as value FROM smf_members t1 left join smf_themes t2 on t1.id_member = t2.id_member and t2.variable='cust_steam-'");
 
-$id = 0;
 while ($row = mysql_fetch_assoc($result)) {
 	if (strlen($row["value"])==17) {
-	$steams[$id][$row["value"]]["real_name"] = $row["real_name"];
-	$steams[$id][$row["value"]]["id_member"] = $row["id_member"];
-	$steams[$id][$row["value"]]["member_name"] = $row["member_name"];
-	$id++;
+	$steams[$row["value"]]["id_member"]["real_name"] = $row["real_name"];
+	$steams[$row["value"]]["id_member"]["member_name"] = $row["member_name"];
 	}
 }
 mysql_close($con);
 
-$last = '';
-foreach($steams as $id=>$data) {
-	if(key($data)==$last) {
+foreach($steams as $steam=>$data) {
+	if(sizeof($data)>2) {
 		echo "clone found";
-		var_dump($data);
+		var_dump($steam, $data);
 	}
-	$last = key($data);
 }
 /*
 foreach($steams as $SteamId=>$row) {
