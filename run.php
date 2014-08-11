@@ -14,8 +14,8 @@ $players = $server->getPlayers();
 
 //Get blacklist db
 
-if ($db = new SQLite3("base.db")) { 
-    $results = $db->query('select id, steamid, status from users');
+if ($db1 = new SQLite3("base.db")) { 
+    $results = $db1->query('select id, steamid, status from users');
     while ($row = $results->fetchArray()) {
 		$blacklist[$row["steamid"]] = $row["id"];
 	}
