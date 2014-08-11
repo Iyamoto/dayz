@@ -31,6 +31,8 @@ $result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as memb
 
 while ($row = mysql_fetch_assoc($result)) {
 	$names[$row["real_name"]][$row["id_member"]]["real_name"] = $row["real_name"];
+	$names[$row["real_name"]][$row["id_member"]]["member_name"] = $row["member_name"];
+	$members[$row["member_name"]][$row["id_member"]]["real_name"] = $row["real_name"];
 	$members[$row["member_name"]][$row["id_member"]]["member_name"] = $row["member_name"];
 	if (strlen($row["value"])==17) {
 	$steams[$row["value"]][$row["id_member"]]["real_name"] = $row["real_name"];
@@ -61,12 +63,12 @@ echo  '
 <tbody>
 ';
 
-foreach($names as $name=>$data){
+foreach($members as $name=>$data){
 	if(sizeof($data)>1) {
 		foreach($data as $id=>$row){
 			echo '<tr>';	
-			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["member_name"].'</a></td>';
 			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["real_name"].'</a></td>';
+			echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$id.'">'.$row["member_name"].'</a></td>';
 			echo '</tr>';
 		}
 	}
