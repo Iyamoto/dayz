@@ -38,12 +38,10 @@ while ($row = mysql_fetch_assoc($result)) {
 mysql_close($con);
 
 foreach($steams as $steam=>$data) {
-	var_dump($steam, $data);
 	if(sizeof($data)>2) {
 		echo "clone found";
 		var_dump($steam, $data);
 	}
-	break;
 }
 /*
 foreach($steams as $SteamId=>$row) {
