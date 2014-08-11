@@ -21,7 +21,7 @@ showHeader();
 
 echo '
 	<div class="container">
-	<h2>Clone by SteamID</h2>
+	<h2>Clones by SteamID</h2>
 <table class="table table-bordered">
 <thead>
 	<tr><th>ForumName</th><th>Realname</th><th>SteamID</th></tr>
@@ -59,7 +59,7 @@ foreach($steams as $SteamId=>$data) {
 
 echo  '
 </tbody></table>
-<h2>Clone by Real_Name</h2>
+<h2>Clones by Real_Name</h2>
 <table class="table table-bordered">
 <thead>
 	<tr><th>RealName</th><th>MemberName</th></tr>
@@ -80,7 +80,7 @@ foreach($names as $name=>$data){
 
 echo  '
 </tbody></table>
-<h2>Clone by Member_Name</h2>
+<h2>Clones by Member_Name</h2>
 <table class="table table-bordered">
 <thead>
 	<tr><th>MemberName</th><th>RealName</th></tr>
