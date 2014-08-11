@@ -39,7 +39,7 @@ mysql_close($con);
 
 foreach($steams as $steam=>$data) {
 	echo sizeof($data)." ";
-	if(sizeof($data)>2) {
+	if(sizeof($data)>1) {
 		echo "clone found";
 		var_dump($steam, $data);
 	}
