@@ -44,7 +44,7 @@ echo '
 			</thead>
 	<tbody>
 ';
-$result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as member_name ,t1.real_name  as real_name , t2.value as value FROM smf_members t1 inner join  smf_themes t2 on t1.id_member = t2.id_member and t2.variable='cust_steam-'");
+$result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as member_name ,t1.real_name  as real_name , t2.value as value FROM smf_members t1 inner join  smf_themes t2 on t1.id_member = t2.id_member and t2.variable='cust_steam-' ORDER by t1.id_member DESC");
 
 while ($row = mysql_fetch_assoc($result)) {
 	if (isOnline($players, $row["real_name"]))
