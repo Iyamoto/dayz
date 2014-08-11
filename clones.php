@@ -31,8 +31,8 @@ $result = mysql_query("SELECT t1.id_member as id_member , t1.member_name as memb
 
 while ($row = mysql_fetch_assoc($result)) {
 	if (strlen($row["value"])==17) {
-	$steams[$row["value"]]["id_member"]["real_name"] = $row["real_name"];
-	$steams[$row["value"]]["id_member"]["member_name"] = $row["member_name"];
+	$steams[$row["value"]][$row["id_member"]]["real_name"] = $row["real_name"];
+	$steams[$row["value"]][$row["id_member"]]["member_name"] = $row["member_name"];
 	}
 }
 mysql_close($con);
