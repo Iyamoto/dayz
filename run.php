@@ -24,7 +24,6 @@ if (!$con) {
 //Form table
 
 showHeader();
-showCounter($players);
 
 $html = '
 	<div class="container">
@@ -34,6 +33,8 @@ $html = '
 </thead>
 <tbody>
 ';
+
+$BadSteam = 0;
 
 foreach($players as $player){
 	$DayzName = $player->getName();
@@ -53,7 +54,8 @@ foreach($players as $player){
 	if (strlen($SteamId)==17) {
 		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 		if ($calcbeguid==true) $BEGUID = getBEGUID($SteamId);
-	}
+	} else 
+		$BadSteam++;
 	
 	$Fraction = getFraction($User);
 	
@@ -65,6 +67,9 @@ $html .= '
 </div>
 </body>
 </html>';
+
+$Counter = getCounter($players, $BadSteam);
+$html = $Counter . $html;
 
 mysql_close($con);
 echo $html;

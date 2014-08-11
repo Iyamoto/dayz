@@ -1,10 +1,11 @@
 ﻿<?php
 //Helpers
 
-function showCounter($players, $max=40){
-	echo "<div>";
-	echo 'Online: '.sizeof($players). '/'.$max;
-	echo "</div>";
+function getCounter($players, $bad, $max=40){
+	$html = "<div>";
+	$html .=  'Online: '.sizeof($players). '/'.$max.', Bad steam: '.$bad;
+	$html .=  "</div>";
+	return $html
 }
 
 function isOnline($players, $ForumName){
