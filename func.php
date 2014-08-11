@@ -1,5 +1,11 @@
-﻿<?
+﻿<?php
 //Helpers
+
+function showCounter($players, $max=40){
+	echo "<div>";
+	echo 'Online: '.sizeof($players). '/'.$max;
+	echo "</div>";
+}
 
 function isOnline($players, $ForumName){
 	foreach($players as $player){

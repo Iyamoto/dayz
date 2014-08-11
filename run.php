@@ -24,6 +24,7 @@ if (!$con) {
 //Form table
 
 showHeader();
+showCounter($players);
 
 $html = '
 	<div class="container">
