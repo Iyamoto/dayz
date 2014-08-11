@@ -12,6 +12,17 @@ $server = new GoldSrcServer($ip, $port);
 $server->initialize();
 $players = $server->getPlayers();
 
+//Get blacklist db
+
+if ($db = new SQLite3("base.db")) { 
+    $results = $db->query('select id, steamid, status from users');
+    while ($row = $results->fetchArray()) {
+		$blacklist[$row["steamid"]] = $row["id"];
+	}
+} else {
+    die('black list not found');
+}
+
 //Connect to forum db
 $con = mysql_connect('localhost', $db, $pass);
 if (!$con) {
@@ -58,8 +69,11 @@ foreach($players as $player){
 		$BadSteam++;
 	
 	$Fraction = getFraction($User);
-	
-	$html .= '<tr><td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
+	if (array_key_exists($SteamId, $blacklist)) 
+		$html .= '<tr class="inblacklist">';
+	else 
+		$html .= '<tr>';
+	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
 }
 
 $html .= '
