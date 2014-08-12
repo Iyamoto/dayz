@@ -2,8 +2,12 @@
 //Helpers
 
 function getCounter($players, $bad, $Blacklisted, $max=40){
+	if ($bad==0) $styleBad = 'players';
+	else $styleBad = 'bad';
+	if ($Blacklisted==0) $styleBL = 'players';
+	else $styleBL = 'bad';
 	$html = '<div class="container counter-wrapper">';
-	$html .=  '<div class="well text-center">Online: <span class="players">'.sizeof($players). '</span> / <span class="max">'.$max.',</span> Bad SteamID: <span class="bad">'.$bad.',</span> Wanted: <span class="bad">'.$Blacklisted;
+	$html .=  '<div class="well text-center">Online: <span class="players">'.sizeof($players). '</span> / <span class="max">'.$max.',</span> Bad SteamID: <span class="'.$styleBad.'">'.$bad.'</span>, Wanted: <span class="'.$styleBL.'">'.$Blacklisted;
 	$html .=  "</span></div></div>";
 	return $html;
 }
