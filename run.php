@@ -74,7 +74,7 @@ foreach($players as $player){
 	$Fraction = getFraction($User);
 	if (array_key_exists($SteamId, $blacklist)) {
 		$Blacklisted++;
-		$BeguidText = '<a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$BEGUID.'</a>';
+		$BeguidText = $BEGUID. ' BL: <a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$blacklist[$SteamId].'</a>';
 		$html .= '<tr class="inblacklist">';
 	} else {
 		$html .= '<tr>';
