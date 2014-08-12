@@ -77,7 +77,7 @@ foreach($players as $player){
 		$html .= '<tr class="inblacklist">';
 	} else 
 		$html .= '<tr>';
-	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
+	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td><a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$BEGUID.'</a></td></tr>';
 }
 
 $html .= '
