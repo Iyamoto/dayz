@@ -52,7 +52,7 @@ while ($row = mysql_fetch_assoc($result)) {
 	else 
 		echo '<tr>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["member_name"].'</a></td>';
-	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
+	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;area=showposts;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
 	
 	$SteamId = $row["value"];
 	$SteamText = $SteamId;
