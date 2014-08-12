@@ -74,10 +74,13 @@ foreach($players as $player){
 	$Fraction = getFraction($User);
 	if (array_key_exists($SteamId, $blacklist)) {
 		$Blacklisted++;
+		$BeguidText = '<a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$BEGUID.'</a>';
 		$html .= '<tr class="inblacklist">';
-	} else 
+	} else {
 		$html .= '<tr>';
-	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td><a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$BEGUID.'</a></td></tr>';
+		$BeguidText = $BEGUID;
+	}
+	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BeguidText.'</td></tr>';
 }
 
 $html .= '
