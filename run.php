@@ -48,7 +48,7 @@ $html = '
 $BadSteam = 0;
 $Blacklisted = 0;
 
-$players = array_reverse($players);
+//$players = array_reverse($players);
 
 foreach($players as $player){
 	$DayzName = $player->getName();
