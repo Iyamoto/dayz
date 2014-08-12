@@ -1,9 +1,9 @@
 ﻿<?php
 //Helpers
 
-function getCounter($players, $bad, $max=40){
+function getCounter($players, $bad, $Blacklisted, $max=40){
 	$html = '<div class="container counter-wrapper">';
-	$html .=  '<div class="well text-center">Online: <span class="players">'.sizeof($players). '</span> / <span class="max">'.$max.',</span> Bad steam: <span class="bad">'.$bad;
+	$html .=  '<div class="well text-center">Online: <span class="players">'.sizeof($players). '</span> / <span class="max">'.$max.',</span> Bad SteamID: <span class="bad">'.$bad.',</span> Wanted: <span class="bad">'.$Blacklisted;
 	$html .=  "</span></div></div>";
 	return $html;
 }

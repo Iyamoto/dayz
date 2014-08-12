@@ -46,6 +46,7 @@ $html = '
 ';
 
 $BadSteam = 0;
+$Blacklisted = 0;
 
 foreach($players as $player){
 	$DayzName = $player->getName();
@@ -69,9 +70,10 @@ foreach($players as $player){
 		$BadSteam++;
 	
 	$Fraction = getFraction($User);
-	if (array_key_exists($SteamId, $blacklist)) 
+	if (array_key_exists($SteamId, $blacklist)) {
+		$Blacklisted++;
 		$html .= '<tr class="inblacklist">';
-	else 
+	} else 
 		$html .= '<tr>';
 	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BEGUID. '</td></tr>';
 }
@@ -82,7 +84,7 @@ $html .= '
 </body>
 </html>';
 
-$Counter = getCounter($players, $BadSteam);
+$Counter = getCounter($players, $BadSteam, $Blacklisted);
 $html = $Counter .' '. $html;
 
 mysql_close($con);
