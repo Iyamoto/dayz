@@ -56,6 +56,12 @@
 	color: red;
 	font-size: 20px;
 }	
+.inblacklist {
+	background: red;
+}
+.inblacklist a  , .inblacklist a:hover {
+	color: #333;
+}
 .online {
 	background: #D3EE87;
 }
