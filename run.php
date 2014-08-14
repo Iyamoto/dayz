@@ -6,11 +6,19 @@ error_reporting(E_ALL & ~E_USER_NOTICE | E_STRICT);
 require_once "conf.php";
 require_once "func.php";
 
-//Get players from dayz server
-require_once dirname(__FILE__) . "/lib/steam-condenser.php";
-$server = new GoldSrcServer($ip, $port);
-$server->initialize();
-$players = $server->getPlayers();
+showHeader();
+
+try {
+	//Get players from dayz server
+	require_once dirname(__FILE__) . "/lib/steam-condenser.php";
+	$server = new GoldSrcServer($ip, $port);
+	$server->initialize();
+	$players = $server->getPlayers();
+} catch (Exception $e) {
+    echo 'Exception: ',  $e->getMessage(), "\n";
+	echo '</body></html>';
+	exit;
+}
 
 //Get blacklist db
 
@@ -34,7 +42,7 @@ if (!$con) {
 		
 //Form table
 
-showHeader();
+
 
 $html = '
 	<div class="container">
