@@ -50,6 +50,7 @@ $html = '
 	<table class="table table-bordered">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>DayzName</th>
 			<th>ForumName</th>
 			<th>Group</th>
@@ -114,7 +115,8 @@ foreach($players as $player){
 		$html .= '<tr>';
 		$BeguidText = $BEGUID;
 	}
-	$html .= '<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BeguidText.'</td></tr>';
+	$html .= '<td>
+	<a href="http://prime.gunlinux.org/user/add?steamid='.$SteamId.'&aliases='.$Name.'" title="В черный список"><span class="glyphicon glyphicon-exclamation-sign"></span></a></td>'.'<td>'.$DayzName.'</td><td>'.$NameText.'</td><td>'.$Fraction.'</td><td>'.$SteamText.'</td><td>'.$BeguidText.'</td></tr>';
 }
 
 $html .= '
