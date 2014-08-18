@@ -26,6 +26,7 @@ if ($db1 = new SQLite3("base.db")) {
     $results = $db1->query('select id, steamid, status from users');
     while ($row = $results->fetchArray()) {
 		$blacklist[$row["steamid"]] = $row["id"];
+		$blacklist[$row["steamid"]."s"]= $row["status"];
 	}
 } else {
     die('black list not found');
@@ -45,10 +46,19 @@ if (!$con) {
 
 
 $html = '
-	<div class="container">
-<table class="table table-bordered">
-<thead>
-	<tr><th>DayzName</th><th>ForumName</th><th>Group</th><th>SteamID</th><th>BEGUID</th></tr>
+<div class="container">
+	<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>DayzName</th>
+			<th>ForumName</th>
+			<th>Group</th>
+			<th>SteamID</th>
+';
+if ($calcbeguid) {
+				$html .= '<th>BEGUID</th>';
+}
+$html .='
 </thead>
 <tbody>
 ';
@@ -63,7 +73,7 @@ foreach($players as $player){
 	$User = getForumUser($DayzName);
 	$ForumId = $User["id_member"];
 	$Name = getForumName($User);
-	if ($Name!='NA') $NameText = '<a target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
+	if ($Name!='NA') $NameText = '<a title="Открыть профиль на форуме" target="_blank" href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$ForumId.'">'.$Name.'</a>';
 	else $NameText = $Name;
 	$SteamId = getSteamId($User);
 	$BEGUID = 'NA';
@@ -74,7 +84,7 @@ foreach($players as $player){
 	}
 	
 	if (strlen($SteamId)==17) {
-		$SteamText = '<a target="_blank" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
+		$SteamText = '<a target="_blank" title="Открыть steam профиль" href="http://steamcommunity.com/profiles/'.$SteamId.'">'.$SteamId.'</a>';
 		if ($calcbeguid==true) $BEGUID = getBEGUID($SteamId);
 	} else 
 		$BadSteam++;
@@ -82,8 +92,24 @@ foreach($players as $player){
 	$Fraction = getFraction($User);
 	if (array_key_exists($SteamId, $blacklist)) {
 		$Blacklisted++;
-		$BeguidText = $BEGUID. ' BL: <a target="_blank" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$blacklist[$SteamId].'</a>';
-		$html .= '<tr class="inblacklist">';
+		$BeguidText ='';
+		if ($calcbeguid) {
+			$BeguidText = $BEGUID;
+		}
+	$BeguidText.=' <a target="_blank" title="Посмотреть причину нахождения в черном списке" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">';		
+	if ($blacklist[$steamId."s"]==0) {
+		$BeguidText .= "На заметке";
+	}
+	if ($blacklist[$steamId."s"]==1) {
+		$BeguidText .= "Предупреждение";
+	}
+	if ($blacklist[$steamId."s"]==2) {
+		$BeguidText .= "Банить";
+	}
+	if ($blacklist[$steamId."s"]==3) {
+		$BeguidText .= "Забанен";
+	}
+		$html .= '<tr class="inblacklist inblacklist'.$blacklist[$SteamId."s"].'">';
 	} else {
 		$html .= '<tr>';
 		$BeguidText = $BEGUID;
