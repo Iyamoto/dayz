@@ -56,11 +56,25 @@
 	color: red;
 	font-size: 20px;
 }	
-.inblacklist {
+.inblacklist a {
+	text-decoration: underline;
+}
+.inblacklist a:hover {
+	text-decoration: none;
+}
+.inblacklist,.inblacklist a,.inblacklist a:hover {
+	color: #fff;
+}
+	
+.inblacklist0, .inblacklist0 a, .inblacklist0 a:hover,.inblacklist1, .inblacklist1 a, .inblacklist1 a:hover {
+	color: #000;
+	background: yellow;
+}
+.inblacklist2 {
 	background: red;
 }
-.inblacklist a  , .inblacklist a:hover {
-	color: white;
+.inblacklist3 {
+	background: #000;
 }
 .online {
 	background: #D3EE87;
