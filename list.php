@@ -40,7 +40,7 @@ echo '
 	<div class="container">
 		<table class="table table-bordered">
 			<thead>
-				<tr><th>ForumName</th><th>Realname</th><th>SteamID</th><th>Blacklist</th></tr>
+				<tr><th>#</th><th>ForumName</th><th>Realname</th><th>SteamID</th><th>Blacklist</th></tr>
 			</thead>
 	<tbody>
 ';
@@ -51,6 +51,7 @@ while ($row = mysql_fetch_assoc($result)) {
 		echo '<tr class="online">';
 	else 
 		echo '<tr>';
+	echo '<td><a href="http://prime.gunlinux.org/user/add?steamid='.$row["value"].'&aliases='.$row["real_name"].'" title="В черный список"><span class="glyphicon glyphicon-exclamation-sign"></span></a></td>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;u='.$row["id_member"].'">'.$row["member_name"].'</a></td>';
 	echo '<td><a href="http://forum.oplotdayz.ru/index.php?action=profile;area=showposts;u='.$row["id_member"].'">'.$row["real_name"].'</a></td>';
 	

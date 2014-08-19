@@ -97,20 +97,23 @@ foreach($players as $player){
 		if ($calcbeguid) {
 			$BeguidText = $BEGUID;
 		}
-	$BeguidText.=' <a target="_blank" title="Посмотреть причину нахождения в черном списке" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">';		
-	if ($blacklist[$steamId."s"]==0) {
-		$BeguidText .= "На заметке";
+	$BlackText = '';
+	switch ($blacklist[$SteamId."s"]) {
+	    case '0':
+		$BlackText = 'На заметке';
+		break;
+	    case '1':
+		$BlackText = 'Первый страйк';
+		break;
+	    case '2':
+		$BlackText = 'Банить при заходе';
+		break;
+	    case '3':
+		$BlackText = 'Забанен';
+		break;
 	}
-	if ($blacklist[$steamId."s"]==1) {
-		$BeguidText .= "Предупреждение";
-	}
-	if ($blacklist[$steamId."s"]==2) {
-		$BeguidText .= "Банить";
-	}
-	if ($blacklist[$steamId."s"]==3) {
-		$BeguidText .= "Забанен";
-	}
-		$html .= '<tr class="inblacklist inblacklist'.$blacklist[$SteamId."s"].'">';
+	$BeguidText.=' <a target="_blank" title="Посмотреть причину нахождения в черном списке" href="http://prime.gunlinux.org/user/'.$blacklist[$SteamId].'">'.$BlackText.'</a>';	
+	$html .= '<tr class="inblacklist inblacklist'.$blacklist[$SteamId."s"].'">';
 	} else {
 		$html .= '<tr>';
 		$BeguidText = $BEGUID;
